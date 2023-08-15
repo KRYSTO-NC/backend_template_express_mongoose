@@ -9,14 +9,7 @@ const {
   findUserByCode,
 } = require('../controllers/users')
 
-//include other resources router
-const pointageRouter = require('./pointages')
-const maladieRouter = require('./maladies')
 const router = express.Router({ mergeParams: true })
-
-//Re-route into other ressource routers
-router.use('/:userId/pointages', pointageRouter)
-router.use('/:userId/maladies', maladieRouter)
 
 const { protect, authorize } = require('../middlewares/auth')
 const User = require('../models/User')
@@ -27,11 +20,9 @@ const advancedResults = require('../middlewares/advancedResults')
 
 router
   .route('/')
-  .get(advancedResults(User, 'customer contrats card'), getUsers)
+  .get(advancedResults(User), getUsers)
 
   .post(createUser)
-
-router.route('/code/:code').get(findUserByCode)
 
 router.route('/:id').get(getUser).put(updateUser).delete(deleteUser)
 router.route('/:id/photo').put(uploadUserPhoto)

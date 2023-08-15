@@ -11,7 +11,6 @@ const xss = require('xss-clean')
 const rateLimit = require('express-rate-limit')
 const hpp = require('hpp')
 const cors = require('cors')
-const socketIo = require('socket.io')
 //import middlewares
 const errorHandler = require('./middlewares/error.js')
 
@@ -27,7 +26,6 @@ connectDB()
 // Route files
 const auth = require('./routes/auth')
 const users = require('./routes/users')
-const { log } = require('console')
 
 // initialize express  application
 const app = express()
@@ -76,9 +74,9 @@ app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }))
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 //Mount routers
-app.use(`${BASE_URL}/auth`, auth)
+app.use(`apiName/auth`, auth)
 
-app.use(`${BASE_URL}/users`, users)
+app.use(`apiName/users`, users)
 
 //error handler
 app.use(errorHandler)

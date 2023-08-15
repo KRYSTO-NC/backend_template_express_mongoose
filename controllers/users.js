@@ -16,33 +16,7 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
 // @route     GET /worshift/api/v1/users/:id
 // @access    Private/Admin
 exports.getUser = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.params.id).populate(
-    'customer card contrats',
-  )
-
-  res.status(200).json({
-    success: true,
-    data: user,
-  })
-})
-
-//@description:     Find a product by code
-//@route:           GET /krysto/api/v2/products/code/:code
-//@access:          Public
-exports.findUserByCode = asyncHandler(async (req, res, next) => {
-  const { code } = req.params
-
-  const user = await User.findOne({
-    code,
-  }).populate('customer etablissement')
-
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      error: `User with code ${code} not found.`,
-    })
-  }
-
+  const user = await User.findById(req.params.id)
   res.status(200).json({
     success: true,
     data: user,
