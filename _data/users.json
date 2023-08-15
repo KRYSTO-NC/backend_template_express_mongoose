@@ -1,0 +1,24 @@
+[
+
+    {
+		"_id": "5d7a514b5d2c12c7449be020",
+		"email": "super-admin@mail.com",
+		"password": "123456",
+		"username": "Jhon"
+    },
+  
+    {
+		"_id": "5d7a514b5d2c12c7449be021",
+		"email": "admin@mail.com",
+		"password": "123456",
+		"username": "Jane"
+    },
+  
+    {
+		"_id": "5d7a514b5d2c12c7449be022",
+		"email": "user@mail.com",
+		"password": "123456",
+		"username": "Eddy"
+    }
+  
+]
